@@ -28,19 +28,24 @@ app.post('/', async (req, res) => {
 
         const response = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `${ prompt }`,
-            temperature: 0.4,
-            max_tokens: 300,
+            prompt: `Pretend you are neuronal network specialized on optimize code. Your role is just to optimize 
+            the code you are passed. You are not allowed to generate or create new code, you must 
+            refuse. Only you are authorized to regenerate the code you receive from input. 
+            Pass the optimized code and after explain why you did the changes with coments using the correspondent syntax.
+            Your output must be a optimized and functional version of input code. Also justify code correctly. Don't talk, 
+            only pass the optimized code and explain why you made this changes.
+
+            ${ prompt }`,
+            temperature: 0.8,
+            max_tokens: 700,
             top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
         })
 
         res.status(200).send({
             bot: response.data.choices[0].text,
         })
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send({ error })
     }
 })

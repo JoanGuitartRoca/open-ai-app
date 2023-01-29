@@ -5,17 +5,38 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Learning</title>
+    <link rel="stylesheet" href="prism.css">
     <link rel="stylesheet" href="style.css">
+
   </head>
   <body>
+    <header>
+      <div class="header">
+
+        <h1>CodeMizer</h1>
+        <nav>
+          <li>
+            <ul> <img src="assets/github-icon.svg" alt=""> </ul>
+          </li>
+        </nav>
+      </div>
+    </header>
     <div id="app">
-      <div id="chat_container"></div>
-      <form>
-        <textarea name="prompt" cols="1" rows="1" placeholder="Ask me something..."></textarea>
-        <button type="submit"><img src="assets/send.svg"/></button>
-      </form>
-    
+      <div class="container">
+        <form>
+          <textarea name="prompt" cols="1" rows="1" placeholder="Pass me some code to optimize..."></textarea>
+          <button type="submit"><img src="assets/send.svg"/></button>
+        </form>
+        <div id="chat_container">
+          <div style="height: 100%;">
+            <pre style="height: 100%;"><code class="language-css" id="result"></code></pre>
+          </div>
+        </div>
+      </div>
+        
     </div>
     <script type="module" src="script.js"></script>
+    <script src="prism.js"></script>
+
   </body>
 </html>
